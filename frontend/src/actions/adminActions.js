@@ -23,7 +23,7 @@ import {
 } from "../features/admin/userBlockSlice";
 
 import axios from "axios";
-import { URL } from "../App";
+
 
 export const listusers = () => async (dispatch, getState) => {
   try {
@@ -41,7 +41,7 @@ export const listusers = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.get(`${URL}/api/admin`, config);
+    const { data } = await axios.get(`/api/admin`, config);
     console.log(data);
 
     dispatch(usersListSuccess(data));
@@ -68,7 +68,7 @@ export const deleteUserAction = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`${URL}/api/admin/${id}`, config);
+    const { data } = await axios.delete(`/api/admin/${id}`, config);
 
     dispatch(userDeleteSuccess(data));
   } catch (error) {
@@ -96,7 +96,7 @@ export const updateUserAction = (user) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.put(
-      `${URL}/api/admin/${user.id}`,
+      `/api/admin/${user.id}`,
       user,
       config
     );
@@ -131,7 +131,7 @@ export const blockUserAction = (id, status) => async (dispatch, getState) => {
     };
 
     const { data } = await axios.patch(
-      `${URL}/api/admin/${id}`,
+      `/api/admin/${id}`,
       sendStatus,
       config
     );

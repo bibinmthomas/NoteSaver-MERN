@@ -1,5 +1,4 @@
 import axios from "axios";
-import { URL } from "../App";
 import {
   userLoginFail,
   userLoginReq,
@@ -28,7 +27,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch(userLoginReq());
 
     const { data } = await axios.post(
-      `${URL}/api/users/login`,
+      `/api/users/login`,
       {
         email,
         password,
@@ -65,7 +64,7 @@ export const register = (name, email, password, pic) => async (dispatch) => {
     dispatch(userRegisterReq());
 
     const { data } = await axios.post(
-      `${URL}/api/users/`,
+      `/api/users/`,
       {
         name,
         email,
@@ -103,7 +102,7 @@ export const updateProfile = (user) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`${URL}/api/users/profile`, user, config);
+    const { data } = await axios.post(`/api/users/profile`, user, config);
 
     dispatch(userUpdateSuccess(data));
 
